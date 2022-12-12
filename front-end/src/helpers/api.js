@@ -8,7 +8,7 @@ export const getContainers = async () => {
   }
 }
 
-export const getmovimentacoes = async () => {
+export const getMovimentacoes = async () => {
   try {
     const response = await fetch('http://localhost:8000/movimentacoes');
     const data = response.json();

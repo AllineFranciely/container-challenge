@@ -14,6 +14,16 @@ function TableMovimentacoes() {
     getAllMovimentacoes();
   }, []);
 
+  function handleDelete(id) {
+    fetch('http://localhost:8000/movimentacoes/' + id, {
+      method: 'DELETE',
+      header: {
+        'Accpet': 'application/json',
+        'Content-type': 'application/json'
+      }
+    })
+  }
+
   return (
     <div>
       <p>Buscar</p>
@@ -35,16 +45,24 @@ function TableMovimentacoes() {
         </thead>
         <tbody>
           {movimentacoes && movimentacoes.filter((filterMovimentacao) => filterMovimentacao.tipo
-          .includes(filterByTipo))
-          .map((movimentacao) => (
-            <tr>
-              <td>{movimentacao.id}</td>
-              <td>{movimentacao.tipo}</td>
-              <td>{movimentacao.dataInicio}</td>
-              <td>{movimentacao.dataFim}</td>
-              <td>{movimentacao.container}</td>
-            </tr>
-          ))}
+            .includes(filterByTipo))
+            .map((movimentacao) => (
+              <tr>
+                <td>{movimentacao.id}</td>
+                <td>{movimentacao.tipo}</td>
+                <td>{movimentacao.dataInicio}</td>
+                <td>{movimentacao.dataFim}</td>
+                <td>{movimentacao.container}</td>
+                <td>
+                  <buttonn
+                    type="button"
+                    onClick={() => handleDelete(movimentacao.id)}
+                  >
+                    Deletar
+                  </buttonn>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
