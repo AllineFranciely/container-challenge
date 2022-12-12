@@ -14,7 +14,9 @@ function TableContainers() {
 
   async function getAllContainers() {
     const allContainers = await getContainers();
-    setContainers(allContainers)
+    // console.log(allContainers);
+    setContainers(allContainers);
+    // console.log(containers);
   }
 
   useEffect(() => {
@@ -37,12 +39,13 @@ function TableContainers() {
       <input
         type="text"
         className="search"
-        placegolder="Pesquiser por cliente"
+        placeholder="pesquisar por cliente"
         onChange={(event) => setFilterByCliente(event.target.value)}
       />
       <select
         name="comparison"
-        className="filterOption"
+        className="filteroption"
+        data-testid="select-comparison"
         onChange={(event) => setFilterByCategoria([{
           ...filterByCategoria[0],
           comparison: event.target.value,
@@ -54,6 +57,7 @@ function TableContainers() {
       <button
         type="button"
         className="button"
+        data-testid="button-filter"
         onClick={() => {
           setContainers(() => filterDataResults());
         }}
@@ -61,7 +65,6 @@ function TableContainers() {
         Filtrar
       </button>
       <button
-        type="button"
         className="button"
         onClick={() => {
           var url = window.location.href + "?filter=true";

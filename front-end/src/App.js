@@ -7,10 +7,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Containers />} />
-        <Route exact path="/movimentacoes" element={<Movimentacoes />} />
-      </Routes>
+        <Routes>
+          <Route exact path="/" element={<Containers />} />
+          <Route path="/movimentacoes" element={<Movimentacoes />} />
+        </Routes>
       </BrowserRouter>
     </>
   );

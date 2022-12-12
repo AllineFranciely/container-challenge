@@ -6,18 +6,17 @@ function Movimentacoes() {
   const navigate = useNavigate();
 
   const [state, setState] = useState({
-    tipo:'Embarque',
+    tipo: 'Embarque',
     dataInicio: '',
     dataFim: '',
     container: 0,
   });
-
   const { tipo, dataInicio, dataFim, container } = state;
 
   const handleChange = ({ target }) => {
     const { name } = target;
     let { value } = target;
-
+    
     setState((prevSt) => ({
       ...prevSt,
       [name]: value,
@@ -35,7 +34,7 @@ function Movimentacoes() {
       body: JSON.stringify(state),
     };
     const data = await fetch('http://localhost:8000/movimentacoes', obj);
-    return data;
+      return data;
   }
 
   return (
@@ -60,33 +59,37 @@ function Movimentacoes() {
           name="dataInicio"
           value={dataInicio}
           onChange={handleChange}
+          placeholder="Data da inicio"
         />
         <input
           type="text"
           name="dataFim"
           value={dataFim}
           onChange={handleChange}
+          placeholder="Data de fim"
         />
         <input
           type="number"
           name="container"
           value={container}
           onChange={handleChange}
+          placeholder="ID do container"
         />
         <button
-        type="submit"
-        onSubmit={handleSubmit}>
+          type="submit"
+          onSubmit={handleSubmit}
+        >
           Salvar
         </button>
       </form>
       <TableMovimentacoes />
       <button
       type="button"
-      onClick={ () => navigate('/')}>
-        Containers
+      onClick={() => navigate('/')}>
+        Continers
       </button>
-    </div>
-  )
+    </div >
+  );
 }
 
-export default Movimentacoes();
+export default Movimentacoes;

@@ -7,7 +7,9 @@ function TableMovimentacoes() {
 
   async function getAllMovimentacoes() {
     const allMovimentacoes = await getMovimentacoes();
-    setMovimentacoes(allMovimentacoes)
+    // console.log(allMovimentacoes);
+    setMovimentacoes(allMovimentacoes);
+    // console.log(movimentacoes);
   }
 
   useEffect(() => {
@@ -15,13 +17,14 @@ function TableMovimentacoes() {
   }, []);
 
   function handleDelete(id) {
-    fetch('http://localhost:8000/movimentacoes/' + id, {
+    fetch('http://localhost:8000/movimentacoes/'+id, {
       method: 'DELETE',
       header: {
-        'Accpet': 'application/json',
+        'Accept': 'application/json',
         'Content-type': 'application/json'
       }
     })
+    //console.log(id)
   }
 
   return (
@@ -30,17 +33,17 @@ function TableMovimentacoes() {
       <input
         type="text"
         className="search"
-        placegolder="Pesquiser por tipo de movimentação"
+        placeholder="pesquisar por tipo de movimentação"
         onChange={(event) => setFilterByTipo(event.target.value)}
       />
       <table>
         <thead>
           <tr>
             <th>Movimentação ID</th>
-            <th>Tipo de movimentação</th>
-            <th>Data de início</th>
-            <th>Data de fim</th>
-            <th>Container ID</th>
+            <th>Tipo de Movimentação</th>
+            <th>Data de Início</th>
+            <th>Data de Fim</th>
+            <th>Container</th>
           </tr>
         </thead>
         <tbody>
@@ -54,12 +57,12 @@ function TableMovimentacoes() {
                 <td>{movimentacao.dataFim}</td>
                 <td>{movimentacao.container}</td>
                 <td>
-                  <buttonn
+                  <button
                     type="button"
                     onClick={() => handleDelete(movimentacao.id)}
                   >
                     Deletar
-                  </buttonn>
+                  </button>
                 </td>
               </tr>
             ))}

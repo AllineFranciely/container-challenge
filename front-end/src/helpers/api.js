@@ -6,7 +6,7 @@ export const getContainers = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+} 
 
 export const getMovimentacoes = async () => {
   try {
@@ -16,4 +16,4 @@ export const getMovimentacoes = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+} 
